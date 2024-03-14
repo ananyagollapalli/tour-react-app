@@ -1,16 +1,16 @@
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
-import Cardcontainer from './components/CardContainer';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
-    <div class="">
+    <div>
     <Header/>
     <Home/>
-    <Cardcontainer/>
-    <ToastContainer position='top-right' />
+    <ToastContainer position='top-right'/>
+    <Footer/>
     </div>
   );
 }

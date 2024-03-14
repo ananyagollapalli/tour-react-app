@@ -1,10 +1,10 @@
-import react from "react";
+import React from "react";
 import { toast } from "react-toastify";
 const Card = ({ id, name, info, image, price }) => {
 
     const bookingHandler =(id)=>{
         console.log("booked", id);
-        toast.success("Booked Successfully");
+        toast.success("Booking Confirmed")
     }
   return (
     <div className="card">

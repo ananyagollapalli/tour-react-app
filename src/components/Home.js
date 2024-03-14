@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Cardcontainer from "./Cardcontainer";
+import data from "../database/data";
 
 function Home() {
   const [selectedState, setSelectedState] = useState("");
@@ -16,22 +18,29 @@ function Home() {
   ];
 
   const filterHandler = (stateName) => {
-    setSelectedState(stateName);
+    setSelectedState(stateName === "Show all states" ? "" : stateName);
   };
 
+  const filterData = selectedState ? data.filter((item) => item.state === selectedState) : data;
+
   return (
-    <div className="filter-option">
-      <select onChange={(e) => filterHandler(e.target.value)}
-      className={selectedState ? "active-select":"inactive-select"}
-    >
-        <option>show all states</option>
-        {uniqueStates.map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
-    </div>
+    <>
+      <div className="filter-option">
+        <select
+          onChange={(e) => filterHandler(e.target.value)}
+          className={selectedState ? "active-select" : "inactive-select"}
+        >
+          <option>Show all states</option>
+          {uniqueStates.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <Cardcontainer data={filterData} />
+    </>
   );
 }
 
